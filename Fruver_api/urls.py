@@ -3,5 +3,5 @@ from .Views.InventoryView import ListaTareas
 
 urlpatterns = [
 
-     path('usuarios/', ListaTareas.as_view())
+     path('products/', ListaTareas.as_view())
 ]

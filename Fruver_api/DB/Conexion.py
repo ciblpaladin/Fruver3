@@ -2,6 +2,9 @@ from django.db import connection
 
 class conexion:
 
+    def __init__(self) -> None:
+        self.products = []
+
     def ejecutar_sp_y_guardar_resultados(self):
         with connection.cursor() as cursor:
             # Ejecutar el procedimiento almacenado
@@ -11,4 +14,6 @@ class conexion:
 
             # Guardar los resultados en objetos Producto
             for resultado in resultados:
-                print(resultado)
+                self.products.append(resultado)
+
+        return self.products
