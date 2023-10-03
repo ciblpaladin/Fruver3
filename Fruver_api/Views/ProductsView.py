@@ -14,7 +14,7 @@ class Products:
         
     class ProductViewList(generics.ListAPIView):
 
-        @api_view(['GET'])
+        
         def get(self, request):
             
             data = Products.repos.get_products()
