@@ -17,7 +17,8 @@ class ProductRepos(RepositoryABC):
             product = Product(
                 id=id,
                 product_name=product_name, 
-                trays_per_box=trays_box)
+                trays_per_box=trays_box
+                )
             
             self.products.append(product.to_dict())
 

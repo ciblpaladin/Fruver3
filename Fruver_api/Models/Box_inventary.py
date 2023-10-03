@@ -10,6 +10,7 @@ class Box_inventary(Imodel):
     box_value  : float
     total_value   : float
     user_fk : int
+
     def to_dict(self):
         return {
 

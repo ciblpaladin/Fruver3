@@ -4,6 +4,7 @@ from Fruver_api.DB.Conexion import conexion
 from django.http import HttpResponse, JsonResponse
 from ..DB.Repository.ProductRepos import ProductRepos
 import json
+from rest_framework.decorators import api_view
 
 
 class Products:
@@ -13,6 +14,7 @@ class Products:
         
     class ProductViewList(generics.ListAPIView):
 
+        @api_view(['GET'])
         def get(self, request):
             
             data = Products.repos.get_products()
