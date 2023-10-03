@@ -5,13 +5,13 @@ from django.http import HttpResponse, JsonResponse
 import json
 
 
-class ListaTareas(generics.ListCreateAPIView):
+class ListaTareas(generics.ListAPIView):
   def __init__(self) -> None:
      pass
 
   def get(self, request):
     con : conexion = conexion()
-    products = con.ejecutar_sp_y_guardar_resultados() 
+    products = con.execute_reader("SP_getProducts()") 
      
     return JsonResponse(products, safe=False)
 
