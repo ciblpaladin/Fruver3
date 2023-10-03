@@ -5,19 +5,21 @@ class conexion:
     def __init__(self) -> None:
         self.table = []
 
+
     def execute_reader(self, sp_name):
         
         def sp_reader(cursor):
-            cursor.execute("select * from "+ sp_name)
-            result = cursor.fetchall()
 
-            for resultado in result:
-                self.table.append(resultado)
+            self.table = []
+
+            cursor.execute("select * from "+ sp_name)
+
+            column_names = [desc[0] for desc in cursor.description]
+            self.table = [dict(zip(column_names, row)) for row in cursor.fetchall()]
 
 
         self.__execute_sp(lambda cursor : sp_reader(cursor))
-
-
+        print(self.table)
         return self.table
     
     def execute_cmd(self, sp_cmd_name):

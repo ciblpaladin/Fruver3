@@ -1,10 +1,7 @@
-from typing import Any
 from rest_framework import generics
 from Fruver_api.DB.Conexion import conexion
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from ..DB.Repository.ProductRepos import ProductRepos
-import json
-from rest_framework.decorators import api_view
 
 
 class Products:
@@ -17,5 +14,5 @@ class Products:
         
         def get(self, request):
             
-            data = Products.repos.get_products()
+            data = Products.repos.get_all("SP_getProducts()")
             return JsonResponse(data, safe=False)
