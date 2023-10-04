@@ -14,6 +14,6 @@ class Map_data:
         if sp_build.endswith(",)"):
             sp_building = sp_build[:-2]
             sp_building += ")"
-            
+
             return sp_building
      

@@ -14,7 +14,12 @@ class Inventory:
       
       inventory_box = Inventory.repos.get_all("SP_getBoxInventary()") 
       
-      return JsonResponse(inventory_box, safe=False)
+      return JsonResponse(inventory_box.to_dict(), safe=False)
+    
+    def post(self, request):
+
+        data_entry = Inventory.repos.create(request, "sp_set_box_inventary")
+        return JsonResponse(data_entry.to_dict())
 
   class InvetoryUnitList(generics.ListAPIView):
 
@@ -25,4 +30,8 @@ class Inventory:
       print(inventory_unit)
       return JsonResponse(inventory_unit.to_dict())  
 
+    def post(self, request):
+
+        data_entry = Inventory.repos.create(request, "sp_set_box_inventary_unit")
+        return JsonResponse(data_entry.to_dict())
 

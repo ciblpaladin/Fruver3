@@ -3,6 +3,7 @@ from .Views.ProductsView import Products
 from .Views.InventoryView import Inventory
 from .Views.SuppliersView import Suppliers, SuppliersDebts
 from .Views.DebtorsView import Debtors, DebtorsCredits
+from .Views.RecordsView import Records
 
 urlpatterns = [
 
@@ -14,7 +15,10 @@ urlpatterns = [
      ##Inventarios end points==================================================
      
      path('Inventorybox/', Inventory.InvetoryBoxList.as_view()),
+     path('Inventorybox_create', Inventory.InvetoryBoxList.as_view()),
+
      path('Inventoryunit/', Inventory.InvetoryUnitList.as_view()),
+     path('Inventoryunit_create', Inventory.InvetoryUnitList.as_view()),
 
      ## proveedores end points=================================================
     
@@ -23,11 +27,15 @@ urlpatterns = [
 
      path('suppliersdebts/', SuppliersDebts.SuppliersDebtsViewList.as_view()),
      path('suppliersdebts_create', SuppliersDebts.SuppliersDebtsViewList.as_view()),
+
      ## deudores end points=====================================================
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
      path('debtors_create', Debtors.DebtorsViewList.as_view()),
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
+
+     ##URL PARA ELIMINAR REGISTROS 
+     path('records/delete_soft', Records.RecordsViewList.as_view())
      
 ]

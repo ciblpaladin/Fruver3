@@ -63,7 +63,7 @@ class conexion:
         return Response(
 
                     Status=True,
-                    Messague=f"Datos insertados correctamente, filas afectadas: {self.rows_affected}",
+                    Messague=f"Ejecucion completada correctamente, filas afectadas: {self.rows_affected}",
                     Data = []
 
                     )
