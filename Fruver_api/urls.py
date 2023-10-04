@@ -22,12 +22,12 @@ urlpatterns = [
      path('suppliers_create', Suppliers.SuppliersViewList.as_view()),
 
      path('suppliersdebts/', SuppliersDebts.SuppliersDebtsViewList.as_view()),
-
+     path('suppliersdebts_create', SuppliersDebts.SuppliersDebtsViewList.as_view()),
      ## deudores end points=====================================================
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
      path('debtors_create', Debtors.DebtorsViewList.as_view()),
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
-     path('debtorscredits_create', DebtorsCredits.DebtorsCreditsViewList.as_view()),
+     
 ]

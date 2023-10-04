@@ -33,3 +33,8 @@ class SuppliersDebts:
             
             data = SuppliersDebts.repos.get_all("sp_get_suppliers_debts()")
             return JsonResponse(data.to_dict())
+        
+        def post(self, request):
+
+            data_entry = Suppliers.repos.create(request, "sp_set_debtors_credit")
+            return JsonResponse(data_entry.to_dict())
