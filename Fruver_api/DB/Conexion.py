@@ -1,10 +1,11 @@
 from django.db import connection
+from ..Response_server.Response import Response
 
 class conexion:
 
     def __init__(self) -> None:
         self.table = []
-
+        self.rows_affected = 0
 
     def execute_reader(self, sp_name):
         
@@ -17,21 +18,55 @@ class conexion:
             column_names = [desc[0] for desc in cursor.description]
             self.table = [dict(zip(column_names, row)) for row in cursor.fetchall()]
 
+        try:
 
-        self.__execute_sp(lambda cursor : sp_reader(cursor))
-        print(self.table)
-        return self.table
+            self.__execute_sp(lambda cursor : sp_reader(cursor))
+
+        except Exception as e:
+
+            return Response(
+                    Status=False,
+                    Messague=f"Error al obtener datos {e}",
+                    Data= []
+                    
+                    )
+        
+        return Response(
+
+                    Status=True,
+                    Messague=f"Datos obtenidos correctamente",
+                    Data = self.table
+
+                    )
     
     def execute_cmd(self, sp_cmd_name):
         
         def sp_cmd(cursor):
-            try:          
-                cursor.execute("call "+ sp_cmd_name)
+                     
+                cursor.execute("select "+ sp_cmd_name)
+                self.rows_affected = cursor.rowcount
 
-            except Exception as e:
+        try:
 
-                print(f"error al ejecutar procedimiento {e}")
+            self.__execute_sp(lambda cursor : sp_cmd(cursor))
 
+        except Exception as e:
+
+            return Response(
+
+                    Status=False,
+                    Messague=f"Error al insertar datos {e}",
+                    Data = []
+
+                    )
+
+        return Response(
+
+                    Status=True,
+                    Messague=f"Datos insertados correctamente, filas afectadas: {self.rows_affected}",
+                    Data = []
+
+                    )
 
     def __execute_sp(self, call):
 

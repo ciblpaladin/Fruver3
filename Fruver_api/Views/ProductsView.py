@@ -15,4 +15,9 @@ class Products:
         def get(self, request):
             
             data = Products.repos.get_all("SP_getProducts()")
-            return JsonResponse(data, safe=False)
+            return JsonResponse(data.to_dict())
+
+        def post(self, request):
+
+            data_entry = Products.repos.create(request, "sp_set_products")
+            return JsonResponse(data_entry.to_dict())

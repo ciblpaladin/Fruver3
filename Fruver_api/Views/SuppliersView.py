@@ -14,8 +14,12 @@ class Suppliers:
         def get(self, request):
             
             data = Suppliers.repos.get_all("SP_getSuppliers()")
-            return JsonResponse(data, safe=False)
+            return JsonResponse(data.to_dict())
 
+        def post(self, request):
+
+            data_entry = Suppliers.repos.create(request, "sp_set_suppliers")
+            return JsonResponse(data_entry.to_dict())
 
 class SuppliersDebts:
 
@@ -28,4 +32,4 @@ class SuppliersDebts:
         def get(self, request):
             
             data = SuppliersDebts.repos.get_all("sp_get_suppliers_debts()")
-            return JsonResponse(data, safe=False)
+            return JsonResponse(data.to_dict())

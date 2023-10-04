@@ -22,6 +22,7 @@ class Inventory:
       
       inventory_unit = Inventory.repos.get_all("sp_get_box_inventary_unit()") 
       
-      return JsonResponse(inventory_unit, safe=False)  
+      print(inventory_unit)
+      return JsonResponse(inventory_unit.to_dict())  
 
 
