@@ -36,6 +36,9 @@ urlpatterns = [
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
 
      ##URL PARA ELIMINAR REGISTROS 
-     path('records/delete_soft', Records.RecordsViewList.as_view())
+     path('records/delete_soft', Records.RecordsViewList.as_view()),
+
+     ##URL PARA filtrar tablas por solo 1 campo 
+     path('records/filter', Records.RecordsFilterView.as_view())
      
 ]

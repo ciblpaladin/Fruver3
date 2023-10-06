@@ -13,9 +13,10 @@ class RepositoryABC:
     
     def create(self, request, sp_name):
 
-       SP_building = Map_data.data_to_sp(request, sp_name)
+       data_values = Map_data.data_to_sp(request)
 
-       return self.conn.execute_cmd(SP_building)
+       return self.conn.execute_cmd(sp_name, data_values)
         #return self.conn.execute_cmd(sp_cmd)
 
+    
 

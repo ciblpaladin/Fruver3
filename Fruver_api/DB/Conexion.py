@@ -39,17 +39,17 @@ class conexion:
 
                     )
     
-    def execute_cmd(self, sp_cmd_name):
+    def execute_cmd(self, sp_cmd_name, arg_list):
         
         def sp_cmd(cursor):
-                     
-                cursor.execute("select "+ sp_cmd_name)
+                    
+                cursor.callproc(sp_cmd_name, arg_list)
                 self.rows_affected = cursor.rowcount
 
         try:
 
             self.__execute_sp(lambda cursor : sp_cmd(cursor))
-
+            
         except Exception as e:
 
             return Response(

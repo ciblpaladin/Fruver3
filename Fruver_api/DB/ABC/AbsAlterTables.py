@@ -8,7 +8,12 @@ class AbsAlterTables:
 
     def delete(self, request, sp_name):
 
-        build = Map_data.data_to_sp(request, sp_name)
+        build = Map_data.data_to_sp(request)
         
-        return self.conn.execute_cmd(build)
+        return self.conn.execute_cmd(sp_name, build)
 
+    def filter(self, request, sp_name):
+
+        build = Map_data.data_to_sp(request)
+        
+        return self.conn.execute_reader(sp_name, build)
