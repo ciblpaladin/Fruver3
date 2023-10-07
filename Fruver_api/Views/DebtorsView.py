@@ -39,3 +39,10 @@ class DebtorsCredits:
 
             data_entry = DebtorsCredits.repos.create(request, "sp_set_debtors_credit")
             return JsonResponse(data_entry.to_dict())
+        
+    class DebtorsCreditsViewEdit(generics.RetrieveAPIView):
+
+        def post(self, request):
+
+            data_entry = DebtorsCredits.repos.create(request, "sp_edit_debtors_credit")
+            return JsonResponse(data_entry.to_dict())
