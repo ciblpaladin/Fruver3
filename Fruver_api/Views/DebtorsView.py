@@ -32,8 +32,15 @@ class DebtorsCredits:
         
         def get(self, request):
             
-            data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
-            return JsonResponse(data.to_dict())
+           
+            if request.data["action"] == "get_pays":
+
+                pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
+                return JsonResponse(pays.to_dict())
+            
+            else:
+                data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
+                return JsonResponse(data.to_dict())
         
         def post(self, request):
 
