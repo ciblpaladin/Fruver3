@@ -63,7 +63,7 @@ class DebtorsCredits:
 
     class CreditPaysView(generics.ListAPIView):
 
-        def get(self):
+        def get(self, request):
 
             pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
             return JsonResponse(pays.to_dict())    
