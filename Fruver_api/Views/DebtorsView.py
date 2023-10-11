@@ -37,7 +37,6 @@ class DebtorsCredits:
 
                 pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
                 return JsonResponse(pays.to_dict())
-            
             else:
                 data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
                 return JsonResponse(data.to_dict())
@@ -53,3 +52,17 @@ class DebtorsCredits:
 
             data_entry = DebtorsCredits.repos.create(request, "sp_edit_debtors_credit")
             return JsonResponse(data_entry.to_dict())
+    
+    class DebtorsCreditsViewFilter(generics.ListAPIView):
+
+        def post(self, request):
+
+            credit_filter = DebtorsCredits.repos.filter(request, "sp_filter_debtors_credit")
+            return JsonResponse(credit_filter.to_dict())
+        
+    class CreditHistoryView(generics.ListAPIView):
+
+        def get(self, request):
+            
+            history = DebtorsCredits.repos.get_all("sp_get_credit_history()")
+            return JsonResponse(history.to_dict())

@@ -37,6 +37,8 @@ urlpatterns = [
      path('debtorscredits_pays/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_create/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),
+     path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),
+     path('debtorscredits_credit_history/', DebtorsCredits.CreditHistoryView.as_view()),
 
      ##URL PARA ELIMINAR REGISTROS 
      path('records/delete_soft', Records.RecordsViewList.as_view()),

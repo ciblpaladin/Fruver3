@@ -39,12 +39,20 @@ class conexion:
 
                     )
     
-    def execute_cmd(self, sp_cmd_name, arg_list):
+    def execute_cmd(self, sp_cmd_name, arg_list = [],  with_data = False):
         
         def sp_cmd(cursor):
-                    
-                cursor.callproc(sp_cmd_name, arg_list)
-                self.rows_affected = cursor.rowcount
+
+                if(not with_data):
+                    cursor.callproc(sp_cmd_name, arg_list)
+                    self.rows_affected = cursor.rowcount
+
+                else:
+                    cursor.execute("select * from "+ sp_cmd_name)    
+                    column_names = [desc[0] for desc in cursor.description]
+                    self.table = [dict(zip(column_names, row)) for row in cursor.fetchall()]
+
+                    print(cursor.fetchall())
 
         try:
 
@@ -64,7 +72,7 @@ class conexion:
 
                     Status=True,
                     Messague=f"Ejecucion completada correctamente, filas afectadas: {self.rows_affected}",
-                    Data = []
+                    Data = self.table
 
                     )
 
