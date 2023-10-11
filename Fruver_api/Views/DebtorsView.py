@@ -33,7 +33,7 @@ class DebtorsCredits:
         def get(self, request):
             
            
-            if request.data["action"] == "get_pays":
+            if request.GET.get("action") == "get_pays":
 
                 pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
                 return JsonResponse(pays.to_dict())
