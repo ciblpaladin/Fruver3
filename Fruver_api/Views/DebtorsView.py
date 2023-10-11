@@ -32,14 +32,8 @@ class DebtorsCredits:
         
         def get(self, request):
             
-           
-            if request.GET.get("action") == "get_pays":
-
-                pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
-                return JsonResponse(pays.to_dict())
-            else:
-                data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
-                return JsonResponse(data.to_dict())
+            data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
+            return JsonResponse(data.to_dict())
         
         def post(self, request):
 
@@ -66,3 +60,10 @@ class DebtorsCredits:
             
             history = DebtorsCredits.repos.get_all("sp_get_credit_history()")
             return JsonResponse(history.to_dict())
+
+    class CreditPaysView(generics.ListAPIView):
+
+        def get(self):
+
+            pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
+            return JsonResponse(pays.to_dict())    
