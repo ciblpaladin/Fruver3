@@ -21,6 +21,12 @@ class Debtors:
             data_entry = Debtors.repos.create(request, "sp_set_debtors")
             return JsonResponse(data_entry.to_dict())
 
+    class DebtorsUpdateView(generics.UpdateAPIView):
+
+        def post(self, request):
+
+            data_entry = Debtors.repos.create(request, "sp_update_debtors")     
+            return JsonResponse(data_entry.to_dict())
 
 class DebtorsCredits:
 

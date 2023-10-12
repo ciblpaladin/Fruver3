@@ -32,6 +32,7 @@ urlpatterns = [
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
      path('debtors_create', Debtors.DebtorsViewList.as_view()),
+     path('debtors_edit', Debtors.DebtorsUpdateView.as_view()),
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_pays/', DebtorsCredits.CreditPaysView.as_view()),
