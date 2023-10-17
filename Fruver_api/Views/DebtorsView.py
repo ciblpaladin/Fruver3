@@ -27,7 +27,14 @@ class Debtors:
 
             data_entry = Debtors.repos.create(request, "sp_update_debtors")     
             return JsonResponse(data_entry.to_dict())
+        
+    class DebtorsFilterView(generics.ListAPIView):
 
+        def post(self, request):
+
+            debtor_filter = DebtorsCredits.repos.filter(request, "sp_filter_debtor")
+            return JsonResponse(debtor_filter.to_dict())
+        
 class DebtorsCredits:
 
     con = conexion()
