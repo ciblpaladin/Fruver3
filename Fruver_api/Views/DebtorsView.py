@@ -45,7 +45,7 @@ class DebtorsCredits:
         
         def get(self, request):
             
-            data = DebtorsCredits.repos.get_all("sp_getdebors_credit()")
+            data = DebtorsCredits.repos.get_all("sp_get_debtors_credit()")
             return JsonResponse(data.to_dict())
         
         def post(self, request):
@@ -79,4 +79,6 @@ class DebtorsCredits:
         def get(self, request):
 
             pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
-            return JsonResponse(pays.to_dict())    
+            return JsonResponse(pays.to_dict())
+
+    
