@@ -73,6 +73,11 @@ class DebtorsCredits:
             
             history = DebtorsCredits.repos.get_all("sp_get_credit_history()")
             return JsonResponse(history.to_dict())
+        
+        def post(self, request):
+
+            debtor_filter = DebtorsCredits.repos.filter(request, "sp_filter_history_credit")
+            return JsonResponse(debtor_filter.to_dict())
 
     class CreditPaysView(generics.ListAPIView):
 
