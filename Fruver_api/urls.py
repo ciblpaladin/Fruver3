@@ -38,6 +38,7 @@ urlpatterns = [
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_pays/', DebtorsCredits.CreditPaysView.as_view()),
+     path('debtorscredits_payoff_credit/', DebtorsCredits.CreditPayOfCreditView.as_view()),
      path('debtorscredits_create/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),
      path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),

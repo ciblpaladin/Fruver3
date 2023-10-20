@@ -97,3 +97,10 @@ class DebtorsCredits:
 
             credits_paid = DebtorsCredits.repos.filter(request, "sp_filter_debtors_credit_paids")
             return JsonResponse(credits_paid.to_dict())
+        
+    class CreditPayOfCreditView(generics.UpdateAPIView):
+
+            def post(self, request):
+
+                payd_of_credit = DebtorsCredits.repos.create(request, "sp_edit_debtors_credit")
+                return JsonResponse(payd_of_credit.to_dict())
