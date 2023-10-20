@@ -102,5 +102,5 @@ class DebtorsCredits:
 
             def post(self, request):
 
-                payd_of_credit = DebtorsCredits.repos.create(request, "sp_edit_debtors_credit")
+                payd_of_credit = DebtorsCredits.repos.create(request, "sp_payof_debtors_credit")
                 return JsonResponse(payd_of_credit.to_dict())
