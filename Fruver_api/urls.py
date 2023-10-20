@@ -34,12 +34,15 @@ urlpatterns = [
      path('debtors_create', Debtors.DebtorsViewList.as_view()),
      path('debtors_edit', Debtors.DebtorsFilterView.as_view()),
      path('debtors_update/', Debtors.DebtorsUpdateView.as_view()),
+  
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_pays/', DebtorsCredits.CreditPaysView.as_view()),
      path('debtorscredits_create/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),
      path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),
+     
+     #HISTORIAL DE CREDITO
      path('debtorscredits_credit_history/', DebtorsCredits.CreditHistoryView.as_view()),
      path('debtorscredits_filter_history/', DebtorsCredits.CreditHistoryView.as_view()),
 
