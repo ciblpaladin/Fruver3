@@ -86,4 +86,7 @@ class DebtorsCredits:
             pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
             return JsonResponse(pays.to_dict())
 
-    
+        def post(self, request):
+
+            credits_paid = DebtorsCredits.repos.filter(request, "sp_filter_debtors_credit_paids")
+            return JsonResponse(credits_paid.to_dict())
