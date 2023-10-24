@@ -52,7 +52,7 @@ class conexion:
                     column_names = [desc[0] for desc in cursor.description]
                     self.table = [dict(zip(column_names, row)) for row in cursor.fetchall()]
 
-                    print(cursor.fetchall())
+                   
 
         try:
 
@@ -80,3 +80,6 @@ class conexion:
 
         with connection.cursor() as cursor:
             call(cursor)
+
+
+           

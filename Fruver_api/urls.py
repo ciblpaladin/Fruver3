@@ -43,6 +43,7 @@ urlpatterns = [
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),
      path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),
      path('debtorscredits_paids_filter/', DebtorsCredits.CreditPaysView.as_view()),
+     
 
      #HISTORIAL DE CREDITO
      path('debtorscredits_credit_history/', DebtorsCredits.CreditHistoryView.as_view()),
