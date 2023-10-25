@@ -106,7 +106,4 @@ class DebtorsCredits:
                 return JsonResponse(payd_of_credit.to_dict())
             
 
-            def post(self, request):
-
-                payd_of_credit = DebtorsCredits.repos.create(request, "ertertertert")
-                return JsonResponse(payd_of_credit.to_dict())
+            
