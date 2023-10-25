@@ -24,6 +24,8 @@ urlpatterns = [
     
      path('suppliers/', Suppliers.SuppliersViewList.as_view()),
      path('suppliers_create', Suppliers.SuppliersViewList.as_view()),
+     path('suppliers_filter', Suppliers.SuppliersFilterView.as_view()),
+
 
      path('suppliersdebts/', SuppliersDebts.SuppliersDebtsViewList.as_view()),
      path('suppliersdebts_create', SuppliersDebts.SuppliersDebtsViewList.as_view()),

@@ -13,12 +13,19 @@ class Suppliers:
         
         def get(self, request):
             
-            data = Suppliers.repos.get_all("SP_getSuppliers()")
+            data = Suppliers.repos.get_all("sp_get_suppliers()")
             return JsonResponse(data.to_dict())
 
         def post(self, request):
 
             data_entry = Suppliers.repos.create(request, "sp_set_suppliers")
+            return JsonResponse(data_entry.to_dict())
+    
+    class SuppliersFilterView(generics.ListAPIView):
+
+        def post(self, request):
+
+            data_entry = Suppliers.repos.filter(request, "sp_filter_suppliers")
             return JsonResponse(data_entry.to_dict())
 
 class SuppliersDebts:
