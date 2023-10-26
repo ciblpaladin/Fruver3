@@ -25,6 +25,7 @@ urlpatterns = [
      path('suppliers/', Suppliers.SuppliersViewList.as_view()),
      path('suppliers_create', Suppliers.SuppliersViewList.as_view()),
      path('suppliers_filter', Suppliers.SuppliersFilterView.as_view()),
+     path('suppliers_update', Suppliers.SuppliersUpdateView.as_view()),
 
 
      path('suppliersdebts/', SuppliersDebts.SuppliersDebtsViewList.as_view()),
@@ -39,7 +40,7 @@ urlpatterns = [
      path('debtors_filter/', Debtors.DebtorsFilterView.as_view()),
 
      path('debtorscredits/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
-     path('debtorscredits_pays/', DebtorsCredits.CreditPaysView.as_view()),
+     path('debtorscredits_pays/', DebtorsCredits.CreditPaysView.as_view()),+
      path('debtorscredits_payoff_credit/', DebtorsCredits.CreditPayOfCreditView.as_view()),
      path('debtorscredits_create/', DebtorsCredits.DebtorsCreditsViewList.as_view()),
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),

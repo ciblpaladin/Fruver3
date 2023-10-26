@@ -27,6 +27,13 @@ class Suppliers:
 
             data_entry = Suppliers.repos.filter(request, "sp_filter_suppliers")
             return JsonResponse(data_entry.to_dict())
+        
+    class SuppliersUpdateView(generics.UpdateAPIView):
+
+            def post(self, request):
+
+                supplier_update = Suppliers.repos.create(request, "sp_update_suppliers")
+                return JsonResponse(supplier_update.to_dict())
 
 class SuppliersDebts:
 
