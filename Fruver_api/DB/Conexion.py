@@ -59,14 +59,16 @@ class conexion:
             self.__execute_sp(lambda cursor : sp_cmd(cursor))
             
         except Exception as e:
-
+            print(e)
             return Response(
 
                     Status=False,
                     Messague=f"Error al insertar datos {e}",
                     Data = []
-
+                    
                     )
+        
+             
 
         return Response(
 
