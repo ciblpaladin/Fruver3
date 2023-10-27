@@ -52,3 +52,10 @@ class SuppliersDebts:
 
             data_entry = Suppliers.repos.create(request, "sp_set_debtors_credit")
             return JsonResponse(data_entry.to_dict())
+        
+    class SuppliersDebtsFilterView(generics.ListAPIView):
+
+        def post(self, request):
+
+            suppliers_debts_filter = Suppliers.repos.filter(request, "sp_filter_suppliers_debts")
+            return JsonResponse(suppliers_debts_filter.to_dict())
