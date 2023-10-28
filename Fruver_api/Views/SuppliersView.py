@@ -50,9 +50,9 @@ class SuppliersDebts:
         
         def post(self, request):
 
-            data_entry = Suppliers.repos.create(request, "sp_set_suppliers_debts")
+            data_entry = SuppliersDebts.repos.create(request, "sp_set_suppliers_debts")
             return JsonResponse(data_entry.to_dict())
-        
+
     class SuppliersDebtsFilterView(generics.ListAPIView):
 
         def post(self, request):
