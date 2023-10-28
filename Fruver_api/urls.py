@@ -31,7 +31,7 @@ urlpatterns = [
      path('suppliersdebts/', SuppliersDebts.SuppliersDebtsViewList.as_view()),
      path('suppliersdebts_create', SuppliersDebts.SuppliersDebtsViewList.as_view()),
      path('suppliersdebts_filter', SuppliersDebts.SuppliersDebtsFilterView.as_view()),
-
+     path('suppliers_debts_paid_off', SuppliersDebts.SuppliersDebtsFilterView.as_view()),
      ## deudores end points=====================================================
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
