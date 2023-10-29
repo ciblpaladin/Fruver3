@@ -71,5 +71,5 @@ class SuppliersDebts:
 
         def post(self, request):
 
-            suppliers_debts_pay = Suppliers.repos.filter(request, "sp_settle_debt")
+            suppliers_debts_pay = Suppliers.repos.create(request, "sp_settle_debt")
             return JsonResponse(suppliers_debts_pay.to_dict())             
