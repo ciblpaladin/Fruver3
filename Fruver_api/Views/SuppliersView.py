@@ -62,6 +62,11 @@ class SuppliersDebts:
         
     class SuppliersDebtsPayView(generics.UpdateAPIView):
 
+        def get(self, request):
+            
+            data = SuppliersDebts.repos.get_all("sp_get_suppliers_debts_paid()")
+            return JsonResponse(data.to_dict())
+        
         def post(self, request):
 
             suppliers_debts_pay = Suppliers.repos.filter(request, "sp_pay_off_suppliers_debt")
