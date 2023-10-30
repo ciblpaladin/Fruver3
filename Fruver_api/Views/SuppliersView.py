@@ -74,7 +74,7 @@ class SuppliersDebts:
 
     class SuppliersDebtsPassView(generics.UpdateAPIView):
 
-        def post(self, request):
+        def get(self, request):
 
             suppliers_debts_pay = Suppliers.repos.create(request, "sp_settle_debt")
             return JsonResponse(suppliers_debts_pay.to_dict())             
