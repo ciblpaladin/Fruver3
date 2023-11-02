@@ -13,7 +13,7 @@ urlpatterns = [
      ##Productos end points=====================================================
 
      path('login/', Login.UserLoginView.as_view()),
-     path('logout/', Login.UserLoginView.as_view()),
+     # path('logout/', Login.UserLoginView.as_view()),
      path('users/', User.UserCreateList.as_view()),
      path('users_credentials/', User.UserGetCredentialView.as_view()),
 
