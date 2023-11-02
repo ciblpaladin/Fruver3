@@ -19,8 +19,8 @@ class Login:
 
         def post(self, request):
 
-            data_entry = Login.repos.authenticate_user(request)
-            return data_entry
+            login = Login.repos.authenticate_user(request)
+            return JsonResponse(login.to_dict())
     class UserLogoutView(generics.ListAPIView):
 
         def post(self, request):

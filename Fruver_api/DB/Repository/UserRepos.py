@@ -20,9 +20,17 @@ class UserRepos(RepositoryABC, AbsAlterTables):
 
         if user is not None:
             login(request, user)
-            return JsonResponse({'message': 'Logged in successfully.'})
+            return Response(
+                Status=True,
+                Messague= "Inicio de sesion exitoso.",
+                Data=[]
+            )
         else:
-            return JsonResponse({'message': 'Login failed.'}, status=401)
+            return Response(
+                Status=False,
+                Messague= "Usuario o contraseña incorrecto",
+                Data=[]
+            )
 
     def logout_view(request):
         
