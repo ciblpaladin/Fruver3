@@ -13,24 +13,25 @@ class UserRepos(RepositoryABC, AbsAlterTables):
         super().__init__(conn=conn)
 
     def authenticate_user(self,request):
-        username = request.POST.get("username")
-        password = request.POST.get("password")
+        # username = request.POST.get("username")
+        # password = request.POST.get("password")
 
-        user = authenticate(request,  username=username, password=password)
+        # user = authenticate(request,  username=username, password=password)
 
-        if user is not None:
-            login(request, user)
-            return Response(
-                Status=True,
-                Messague= "Inicio de sesion exitoso.",
-                Data=[]
-            )
-        else:
-            return Response(
-                Status=False,
-                Messague= "Usuario o contraseña incorrecto",
-                Data=[]
-            )
+        # if user is not None:
+        #     login(request, user)
+        #     return Response(
+        #         Status=True,
+        #         Messague= "Inicio de sesion exitoso.",
+        #         Data=[]
+        #     )
+        # else:
+        #     return Response(
+        #         Status=False,
+        #         Messague= "Usuario o contraseña incorrecto",
+        #         Data=[]
+        #     )
+        pass
 
     def logout_view(self,request):
         pass
@@ -42,39 +43,39 @@ class UserRepos(RepositoryABC, AbsAlterTables):
         
     def validate_login(self,request,sp_name):
        
-       login = self.create(request=request, sp_name=sp_name, delete_items="password", with_data=True)
-       pass_in = request.data["password"]
-       pass_store = ""
-       user = UserAuth()
-       for items in login.Data:
-           print(items)
-           for key, value in items.items():
-               if "password" in key:
-                   pass_store = value
-               if "id_card" in key:
-                   user.id_card = value
-                   user.is_valid = True    
+    #    login = self.create(request=request, sp_name=sp_name, delete_items="password", with_data=True)
+    #    pass_in = request.data["password"]
+    #    pass_store = ""
+    #    user = UserAuth()
+    #    for items in login.Data:
+    #        print(items)
+    #        for key, value in items.items():
+    #            if "password" in key:
+    #                pass_store = value
+    #            if "id_card" in key:
+    #                user.id_card = value
+    #                user.is_valid = True    
 
        
-       if(login.Status):
-            if(Password.validate_password(pass_in, pass_store)):
+    #    if(login.Status):
+    #         if(Password.validate_password(pass_in, pass_store)):
 
-                return Response(
-                    Status= True,
-                    Messague= "Sesion iniciada correctamente",
-                    Data= []
-                )
+    #             return Response(
+    #                 Status= True,
+    #                 Messague= "Sesion iniciada correctamente",
+    #                 Data= []
+    #             )
                 
           
-            else:
+    #         else:
                 
-                return Response(
-                    Status=False,
-                    Messague=f"Usuario o contraseña incorrectos",
-                    Data= []
+    #             return Response(
+    #                 Status=False,
+    #                 Messague=f"Usuario o contraseña incorrectos",
+    #                 Data= []
                     
-                    )
-
+    #                 )
+        pass
     def create_user(self, request, sp_name, with_data=False):
         
         user_form = {}

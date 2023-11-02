@@ -33,5 +33,6 @@ class User:
 
         def post(self, request):
 
-            user_details = User.repos.validate_login(request, "sp_get_user_byidcard")
-            return JsonResponse(user_details.to_dict())
+            pass
+            # user_details = User.repos.validate_login(request, "sp_get_user_byidcard")
+            # return JsonResponse(user_details.to_dict())

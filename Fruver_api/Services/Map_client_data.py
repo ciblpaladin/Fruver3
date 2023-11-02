@@ -19,7 +19,7 @@ class Map_data:
         return data
     
     def data_build_sp(sp_name ,data_client):
-        
+        params_build = ""
         for key, values in data_client.data.items():
 
             params_build += f"{values},"
