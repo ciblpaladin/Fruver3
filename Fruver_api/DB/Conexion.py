@@ -44,13 +44,17 @@ class conexion:
         def sp_cmd(cursor):
 
                 if(not with_data):
+                    # print(f"{sp_cmd_name, arg_list}")
                     cursor.callproc(sp_cmd_name, arg_list)
                     self.rows_affected = cursor.rowcount
 
                 else:
-                    cursor.execute("select * from "+ sp_cmd_name)    
+                    sql = f"SELECT * FROM {sp_cmd_name}(" + ', '.join(['%s'] * len(arg_list)) + ")"
+                    # print(sql)
+                    cursor.execute(sql, arg_list)    
                     column_names = [desc[0] for desc in cursor.description]
                     self.table = [dict(zip(column_names, row)) for row in cursor.fetchall()]
+                    # print(f"{cursor.fetchall()} asdasdasdasd")
 
                    
 
@@ -59,7 +63,8 @@ class conexion:
             self.__execute_sp(lambda cursor : sp_cmd(cursor))
             
         except Exception as e:
-            print(e)
+            postgresql_error_message = str(e)
+            print(postgresql_error_message)
             return Response(
 
                     Status=False,
@@ -84,4 +89,6 @@ class conexion:
             call(cursor)
 
 
-           
+    def get_cursor(self):
+
+        return connection.cursor()

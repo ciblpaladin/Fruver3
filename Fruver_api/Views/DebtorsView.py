@@ -2,7 +2,8 @@ from rest_framework import generics
 from Fruver_api.DB.Conexion import conexion
 from django.http import JsonResponse
 from ..DB.Repository.DebtorsRepos import DebtorsRepos
-
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
 class Debtors:
 
     con = conexion()
@@ -10,12 +11,13 @@ class Debtors:
         
     class DebtorsViewList(generics.ListAPIView):
 
-        
+        @permission_classes([IsAuthenticated])
         def get(self, request):
             
             data = Debtors.repos.get_all("SP_getDebtors()")
             return JsonResponse(data.to_dict())
         
+        @permission_classes([IsAuthenticated])
         def post(self, request):
 
             data_entry = Debtors.repos.create(request, "sp_set_debtors")

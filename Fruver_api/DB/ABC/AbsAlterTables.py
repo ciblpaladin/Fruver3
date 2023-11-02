@@ -14,6 +14,6 @@ class AbsAlterTables:
 
     def filter(self, request, sp_name):
 
-        build = Map_data.data_build_sp(sp_name,request)
+        build = Map_data.data_to_sp(request)
         
-        return self.conn.execute_cmd(build, with_data=True)
+        return self.conn.execute_cmd(sp_name,build, with_data=True)
