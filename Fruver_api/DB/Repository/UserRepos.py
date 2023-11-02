@@ -61,7 +61,7 @@ class UserRepos(RepositoryABC, AbsAlterTables):
                 return Response(
                     Status= True,
                     Messague= "Sesion iniciada correctamente",
-                    Data= JWT.get_tokens_for_user(user)
+                    Data= []
                 )
                 
           
