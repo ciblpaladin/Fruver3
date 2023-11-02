@@ -3,19 +3,17 @@ from .Views.ProductsView import Products
 from .Views.InventoryView import Inventory
 from .Views.SuppliersView import Suppliers, SuppliersDebts
 from .Views.DebtorsView import Debtors, DebtorsCredits
-# from .Views.UserView import User
+from .Views.UserView import User
 from .Views.RecordsView import Records
-# from .Views.LoginView import Login
+from rest_framework.authtoken import views
 
 urlpatterns = [
 
 
      ##Productos end points=====================================================
+     path('get_token/', views.obtain_auth_token),
 
-     # path('login/', Login.UserLoginView.as_view()),
-     # # path('logout/', Login.UserLoginView.as_view()),
-     # path('users/', User.UserCreateList.as_view()),
-     # path('users_credentials/', User.UserGetCredentialView.as_view()),
+     path('users_create/', User.UserCreateList.as_view()),
 
      path('products/', Products.ProductViewList.as_view()),
      path('products_create', Products.ProductViewList.as_view()),

@@ -4,6 +4,7 @@ from ..ABC.AbsAlterTables import AbsAlterTables
 from ...Security.password import Password
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from ...Response_server.Response import Response
 
 class UserRepos(RepositoryABC, AbsAlterTables):
 
@@ -11,25 +12,26 @@ class UserRepos(RepositoryABC, AbsAlterTables):
         super().__init__(conn=conn)
 
     def authenticate_user(self,request):
-        # username = request.POST.get("username")
-        # password = request.POST.get("password")
 
-        # user = authenticate(request,  username=username, password=password)
+        username = request.data["username"]
+        password = request.data["password"]
 
-        # if user is not None:
-        #     login(request, user)
-        #     return Response(
-        #         Status=True,
-        #         Messague= "Inicio de sesion exitoso.",
-        #         Data=[]
-        #     )
-        # else:
-        #     return Response(
-        #         Status=False,
-        #         Messague= "Usuario o contraseña incorrecto",
-        #         Data=[]
-        #     )
-        pass
+        user = authenticate(request,  username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return Response(
+                Status=True,
+                Messague= "Inicio de sesion exitoso.",
+                Data=[]
+            )
+        else:
+            return Response(
+                Status=False,
+                Messague= "Usuario o contraseña incorrecto",
+                Data=[]
+            )
+      
 
     def logout_view(self,request):
         pass

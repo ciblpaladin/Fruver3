@@ -2,18 +2,26 @@ from rest_framework import generics
 from Fruver_api.DB.Conexion import conexion
 from django.http import JsonResponse
 from ..DB.Repository.DebtorsRepos import DebtorsRepos
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 
 class Debtors:
 
     con = conexion()
     repos: DebtorsRepos = DebtorsRepos(con)
-        
+    
+    
     class DebtorsViewList(generics.ListAPIView):
 
-        
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def get(self, request):
             
             data = Debtors.repos.get_all("SP_getDebtors()")
+            print(request.user)
             return JsonResponse(data.to_dict())
         
         
@@ -24,6 +32,9 @@ class Debtors:
 
     class DebtorsUpdateView(generics.UpdateAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def post(self, request):
 
             data_entry = Debtors.repos.create(request, "sp_update_debtors")     
@@ -31,12 +42,18 @@ class Debtors:
         
     class DebtorsDetailsView(generics.ListAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def post(self, request):
 
             debtor_details = DebtorsCredits.repos.filter(request, "sp_filter_debtor")
             return JsonResponse(debtor_details.to_dict())
     
     class DebtorsFilterView(generics.ListAPIView):
+
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
 
         def post(self, request):
 
@@ -50,6 +67,8 @@ class DebtorsCredits:
         
     class DebtorsCreditsViewList(generics.ListAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
         
         def get(self, request):
             
@@ -63,6 +82,9 @@ class DebtorsCredits:
         
     class DebtorsCreditsViewEdit(generics.UpdateAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def post(self, request):
 
             data_entry = DebtorsCredits.repos.create(request, "sp_edit_debtors_credit")
@@ -70,12 +92,18 @@ class DebtorsCredits:
     
     class DebtorsCreditsViewFilter(generics.ListAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def post(self, request):
 
             credit_filter = DebtorsCredits.repos.filter(request, "sp_filter_debtors_credit")
             return JsonResponse(credit_filter.to_dict())
         
     class CreditHistoryView(generics.ListAPIView):
+
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
 
         def get(self, request):
             
@@ -89,6 +117,9 @@ class DebtorsCredits:
 
     class CreditPaysView(generics.ListAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+
         def get(self, request):
 
             pays = DebtorsCredits.repos.get_all("sp_get_debtors_credit_pays()")
@@ -101,10 +132,13 @@ class DebtorsCredits:
         
     class CreditPayOfCreditView(generics.UpdateAPIView):
 
-            def post(self, request):
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+        
+        def post(self, request):
 
-                payd_of_credit = DebtorsCredits.repos.create(request, "sp_payof_debtors_credit")
-                return JsonResponse(payd_of_credit.to_dict())
+            payd_of_credit = DebtorsCredits.repos.create(request, "sp_payof_debtors_credit")
+            return JsonResponse(payd_of_credit.to_dict())
             
 
             
