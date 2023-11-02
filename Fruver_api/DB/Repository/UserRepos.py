@@ -39,40 +39,40 @@ class UserRepos(RepositoryABC, AbsAlterTables):
             return JsonResponse({'message': 'Logged out successfully.'})
         else:
             return JsonResponse({'message': 'User is not authenticated.'}, status=401)
-    # def validate_login(self,request,sp_name):
+    def validate_login(self,request,sp_name):
        
-    #    login = self.create(request=request, sp_name=sp_name, delete_items="password", with_data=True)
-    #    pass_in = request.data["password"]
-    #    pass_store = ""
-    #    user = UserAuth(id_card="", is_valid=False)
-    #    for items in login.Data:
-    #        print(items)
-    #        for key, value in items.items():
-    #            if "password" in key:
-    #                pass_store = value
-    #            if "id_card" in key:
-    #                user.id_card = value
-    #                user.is_valid = True    
+       login = self.create(request=request, sp_name=sp_name, delete_items="password", with_data=True)
+       pass_in = request.data["password"]
+       pass_store = ""
+       user = UserAuth(id_card="", is_valid=False)
+       for items in login.Data:
+           print(items)
+           for key, value in items.items():
+               if "password" in key:
+                   pass_store = value
+               if "id_card" in key:
+                   user.id_card = value
+                   user.is_valid = True    
 
        
-    #    if(login.Status):
-    #         if(Password.validate_password(pass_in, pass_store)):
+       if(login.Status):
+            if(Password.validate_password(pass_in, pass_store)):
 
-    #             return Response(
-    #                 Status= True,
-    #                 Messague= "Sesion iniciada correctamente",
-    #                 Data= JWT.get_tokens_for_user(user)
-    #             )
+                return Response(
+                    Status= True,
+                    Messague= "Sesion iniciada correctamente",
+                    Data= JWT.get_tokens_for_user(user)
+                )
                 
           
-    #         else:
+            else:
                 
-    #             return Response(
-    #                 Status=False,
-    #                 Messague=f"Usuario o contraseña incorrectos",
-    #                 Data= []
+                return Response(
+                    Status=False,
+                    Messague=f"Usuario o contraseña incorrectos",
+                    Data= []
                     
-    #                 )
+                    )
 
     def create_user(self, request, sp_name, with_data=False):
         
