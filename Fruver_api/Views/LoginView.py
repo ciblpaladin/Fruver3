@@ -11,12 +11,6 @@ class Login:
         
     class UserLoginView(generics.ListAPIView):
 
-        pass
-        # def get(self, request):
-            
-        #     data = Products.repos.get_all("SP_getProducts()")
-        #     return JsonResponse(data.to_dict())
-
         def post(self, request):
 
             login = Login.repos.authenticate_user(request)
@@ -35,3 +29,7 @@ class Login:
             user_create = Login.repos.create_user(request, "sp_add_user")
             return JsonResponse(user_create.to_dict())
     
+    class CSRF(generics.CreateAPIView):
+
+        def get(request):
+            return JsonResponse({'csrf_token': get_token(request)})

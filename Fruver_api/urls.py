@@ -11,6 +11,7 @@ urlpatterns = [
 
 
      ##Productos end points=====================================================
+     path('getCSRF/', Login.CSRF.as_view()),
      path('login/', Login.UserLoginView.as_view()),
      path('logout/', Login.UserLoginView.as_view()),
      path('users/', User.UserCreateList.as_view()),

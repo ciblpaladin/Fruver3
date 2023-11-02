@@ -11,13 +11,13 @@ class Debtors:
         
     class DebtorsViewList(generics.ListAPIView):
 
-        @permission_classes([IsAuthenticated])
+        
         def get(self, request):
             
             data = Debtors.repos.get_all("SP_getDebtors()")
             return JsonResponse(data.to_dict())
         
-        @permission_classes([IsAuthenticated])
+        
         def post(self, request):
 
             data_entry = Debtors.repos.create(request, "sp_set_debtors")
