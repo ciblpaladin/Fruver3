@@ -2,8 +2,6 @@ from .RepositoryABC import RepositoryABC
 from ..Conexion import conexion
 from ..ABC.AbsAlterTables import AbsAlterTables
 from ...Security.password import Password
-from ...Response_server.Response import Response
-from ...Models.Box_inventary import UserAuth
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 
