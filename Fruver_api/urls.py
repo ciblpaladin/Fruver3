@@ -3,9 +3,9 @@ from .Views.ProductsView import Products
 from .Views.InventoryView import Inventory
 from .Views.SuppliersView import Suppliers, SuppliersDebts
 from .Views.DebtorsView import Debtors, DebtorsCredits
-from .Views.UserView import User
+# from .Views.UserView import User
 from .Views.RecordsView import Records
-from .Views.LoginView import Login
+# from .Views.LoginView import Login
 
 urlpatterns = [
 
