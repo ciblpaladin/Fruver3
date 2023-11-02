@@ -2,8 +2,7 @@ from rest_framework import generics
 from Fruver_api.DB.Conexion import conexion
 from django.http import JsonResponse
 from ..DB.Repository.DebtorsRepos import DebtorsRepos
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import permission_classes
+
 class Debtors:
 
     con = conexion()

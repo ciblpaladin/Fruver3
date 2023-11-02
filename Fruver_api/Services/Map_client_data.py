@@ -18,7 +18,7 @@ class Map_data:
                 data.append(off_list)  
         return data
     
-    def data_build_sp(sp_name ,data_client):
+    def data_build_sp(self,sp_name ,data_client):
         params_build = ""
         for key, values in data_client.data.items():
 
