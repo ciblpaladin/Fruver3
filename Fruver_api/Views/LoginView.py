@@ -29,7 +29,3 @@ class Login:
             user_create = Login.repos.create_user(request, "sp_add_user")
             return JsonResponse(user_create.to_dict())
     
-    class CSRF(generics.CreateAPIView):
-
-        def get(request):
-            return JsonResponse({'csrf_token': get_token(request)})
