@@ -32,19 +32,20 @@ class UserRepos(RepositoryABC, AbsAlterTables):
                 Data=[]
             )
 
-    def logout_view(request):
+    def logout_view(self,request):
+        pass
+        # if request.user.is_authenticated:
+        #     logout(request)
+        #     return JsonResponse({'message': 'Logged out successfully.'})
+        # else:         
+        #     return JsonResponse({'message': 'User is not authenticated.'}, status=401)
         
-        if request.user.is_authenticated:
-            logout(request)
-            return JsonResponse({'message': 'Logged out successfully.'})
-        else:
-            return JsonResponse({'message': 'User is not authenticated.'}, status=401)
     def validate_login(self,request,sp_name):
        
        login = self.create(request=request, sp_name=sp_name, delete_items="password", with_data=True)
        pass_in = request.data["password"]
        pass_store = ""
-       user = UserAuth(id_card="", is_valid=False)
+       user = UserAuth()
        for items in login.Data:
            print(items)
            for key, value in items.items():
