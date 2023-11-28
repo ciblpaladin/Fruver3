@@ -44,9 +44,10 @@ class conexion:
         def sp_cmd(cursor):
 
                 if(not with_data):
-                    # print(f"{sp_cmd_name, arg_list}")
-                    cursor.callproc(sp_cmd_name, arg_list)
+                    #print(f"{sp_cmd_name, arg_list}")
+                    cursor.callproc(sp_cmd_name, list(arg_list.values()))
                     self.rows_affected = cursor.rowcount
+                    print("en conexion")
 
                 else:
                     sql = f"SELECT * FROM {sp_cmd_name}(" + ', '.join(['%s'] * len(arg_list)) + ")"

@@ -93,7 +93,16 @@ class SuppliersDebts:
 
             suppliers_debts_pay = Suppliers.repos.filter(request, "sp_pay_off_suppliers_debt")
             return JsonResponse(suppliers_debts_pay.to_dict())
+    class SuppliersDebtsPayFilterView(generics.UpdateAPIView):
 
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated] 
+        
+
+        def post(self, request):
+
+            suppliers_debts_pay = Suppliers.repos.filter(request, "sp_filter_suppliers_debts_paid")
+            return JsonResponse(suppliers_debts_pay.to_dict())
     class SuppliersDebtsPassView(generics.UpdateAPIView):
 
         authentication_classes = [TokenAuthentication]  
@@ -102,4 +111,30 @@ class SuppliersDebts:
         def post(self, request):
 
             suppliers_debts_pay = Suppliers.repos.create(request, "sp_settle_debt")
-            return JsonResponse(suppliers_debts_pay.to_dict())             
+            return JsonResponse(suppliers_debts_pay.to_dict())
+    
+    class SuppliersDebtsHistoryView(generics.UpdateAPIView):
+
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated] 
+        
+        def get(self, request):
+            
+            data = SuppliersDebts.repos.get_all("sp_get_debts_history()")
+            return JsonResponse(data.to_dict())
+        
+        def post(self, request):
+
+            suppliers_debts_pay = Suppliers.repos.filter(request, "sp_pay_off_suppliers_debt")
+            return JsonResponse(suppliers_debts_pay.to_dict())
+    
+    class SuppliersDebtsTotalView(generics.UpdateAPIView):
+
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated] 
+        
+        
+        def post(self, request):
+
+            suppliers_debts_pay = Suppliers.repos.create(request, "sp_get_total_debts")
+            return JsonResponse(suppliers_debts_pay.to_dict())

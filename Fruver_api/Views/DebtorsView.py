@@ -139,6 +139,15 @@ class DebtorsCredits:
 
             payd_of_credit = DebtorsCredits.repos.create(request, "sp_payof_debtors_credit")
             return JsonResponse(payd_of_credit.to_dict())
-            
+
+    class CreditTotalView(generics.UpdateAPIView):
+
+        authentication_classes = [TokenAuthentication]  
+        permission_classes = [IsAuthenticated]
+        
+        def post(self, request):
+
+            payd_of_credit = DebtorsCredits.repos.create(request, "sp_get_total_credits")
+            return JsonResponse(payd_of_credit.to_dict())        
 
             

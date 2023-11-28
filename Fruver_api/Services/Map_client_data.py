@@ -13,9 +13,9 @@ class Map_data:
             for key in delete_items:
                 del request_form[key]             
         data = []
-        for key ,values in request_form.items():
-            for off_list in values: 
-                data.append(off_list)  
+        for key ,values in request_form.items(): 
+            data.append(values)
+        print(data) 
         return data
     
     def data_build_sp(self,sp_name ,data_client):

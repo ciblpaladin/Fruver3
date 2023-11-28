@@ -17,10 +17,14 @@ urlpatterns = [
 
      path('products/', Products.ProductViewList.as_view()),
      path('products_create', Products.ProductViewList.as_view()),
+     path('products_update', Products.ProductCreateList.as_view()),
+     path('products_filter', Products.ProductfilterView.as_view()),
      ##Inventarios end points==================================================
      
-     path('Inventorybox/', Inventory.InvetoryBoxList.as_view()),
+     path('Inventorybox/', Inventory.InventoryBoxListDate.as_view()),
      path('Inventorybox_create', Inventory.InvetoryBoxList.as_view()),
+     path('Inventorybox_check_date', Inventory.InventoryDateCheckView.as_view()),
+     path('Inventorybox_update', Inventory.InventoryUpdateView.as_view()),
 
      path('Inventoryunit/', Inventory.InvetoryUnitList.as_view()),
      path('Inventoryunit_create', Inventory.InvetoryUnitList.as_view()),
@@ -39,6 +43,10 @@ urlpatterns = [
      path('suppliers_debts_paid_off', SuppliersDebts.SuppliersDebtsPayView.as_view()),
      path('suppliers_debts_pass', SuppliersDebts.SuppliersDebtsPassView.as_view()),
      path('suppliers_debts_paids/', SuppliersDebts.SuppliersDebtsPayView.as_view()),
+     path('suppliers_debts_paids_filter', SuppliersDebts.SuppliersDebtsPayFilterView.as_view()),
+     #HISTORIAL DE DEUDAS
+     path('suppliers_debts_history/', SuppliersDebts.SuppliersDebtsHistoryView.as_view()),
+     path('suppliers_debts_total/', SuppliersDebts.SuppliersDebtsTotalView.as_view()),
      ## deudores end points=====================================================
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
@@ -54,6 +62,8 @@ urlpatterns = [
      path('debtorscredits_edit/', DebtorsCredits.DebtorsCreditsViewEdit.as_view()),
      path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),
      path('debtorscredits_paids_filter/', DebtorsCredits.CreditPaysView.as_view()),
+
+     path('debtorscredits_total', DebtorsCredits.CreditTotalView.as_view()),
      
 
      #HISTORIAL DE CREDITO

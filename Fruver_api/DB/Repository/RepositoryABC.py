@@ -11,11 +11,11 @@ class RepositoryABC:
         
         return self.conn.execute_reader(sp_reader)
     
-    def create(self, request, sp_name, with_data = False, delete_items = ""):
+    def create(self, request, sp_name, with_data = True, delete_items = ""):
 
        data_values = Map_data.data_to_sp(request, delete_items)
        return self.conn.execute_cmd(sp_name, data_values, with_data)
-        #return self.conn.execute_cmd(sp_cmd)
+
 
     def call_sp(self, data, sp_name):
         return self.conn.execute_cmd(sp_name, data)
