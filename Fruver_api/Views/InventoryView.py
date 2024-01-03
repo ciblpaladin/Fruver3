@@ -28,19 +28,22 @@ class Inventory:
 
         data = Inventory.repos_in.filter(request, "sp_get_box_inventory")
         return JsonResponse(data.to_dict(), safe=False)
-    
+
+  class InventoryUnitListget(generics.ListAPIView):
+
+    def post(self, request):
+      
+      inventory_unit = Inventory.repos_in.filter(request,"sp_get_unit_inventory") 
+      
+      return JsonResponse(inventory_unit.to_dict(), safe=False)  
+
+
   class InvetoryUnitList(generics.ListAPIView):
 
-    def get(self, request):
-      
-      inventory_unit = Inventory.repos.get_all("sp_get_box_inventary_unit()") 
-      
-      print(inventory_unit)
-      return JsonResponse(inventory_unit.to_dict())  
 
     def post(self, request):
 
-        data_entry = Inventory.repos.create(request, "sp_set_box_inventary_unit")
+        data_entry = Inventory.repos_in.create_inventory(request, "sp_set_box_inventary_unit")
         return JsonResponse(data_entry.to_dict())
 
   class InventoryDateCheckView(generics.ListAPIView):
@@ -56,3 +59,26 @@ class Inventory:
         
         data_entry = Inventory.repos_in.create_inventory(request, "sp_update_box_inventary")
         return JsonResponse(data_entry.to_dict())
+     
+  class InventoryUnitDateCheckView(generics.ListAPIView):
+
+      def post(self, request):
+        
+        data_entry = Inventory.repos_in.filter(request, "sp_get_unit_inventory")
+        return JsonResponse(data_entry.to_dict())
+      
+  class InvetoryUnitListDate(generics.ListAPIView):
+
+    def post(self, request):
+      
+      inventory_unit = Inventory.repos_in.filter(request,"sp_get_box_inventory_unit") 
+      
+      return JsonResponse(inventory_unit.to_dict(), safe=False)
+
+
+  class InventoryUnitUpdateView(generics.UpdateAPIView):
+     
+     def post(self, request):
+        
+        data_entry = Inventory.repos_in.create_inventory(request, "sp_update_box_inventary_unit")
+        return JsonResponse(data_entry.to_dict())        

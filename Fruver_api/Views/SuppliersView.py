@@ -134,7 +134,7 @@ class SuppliersDebts:
         permission_classes = [IsAuthenticated] 
         
         
-        def post(self, request):
+        def get(self, request):
 
-            suppliers_debts_pay = Suppliers.repos.create(request, "sp_get_total_debts")
+            suppliers_debts_pay = Suppliers.repos.get_all("sp_get_total_debts()")
             return JsonResponse(suppliers_debts_pay.to_dict())

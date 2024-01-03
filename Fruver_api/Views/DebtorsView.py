@@ -145,9 +145,9 @@ class DebtorsCredits:
         authentication_classes = [TokenAuthentication]  
         permission_classes = [IsAuthenticated]
         
-        def post(self, request):
+        def get(self, request):
 
-            payd_of_credit = DebtorsCredits.repos.create(request, "sp_get_total_credits")
+            payd_of_credit = DebtorsCredits.repos.get_all("sp_get_total_credits()")
             return JsonResponse(payd_of_credit.to_dict())        
 
             

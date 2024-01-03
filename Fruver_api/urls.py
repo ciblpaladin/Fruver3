@@ -26,8 +26,10 @@ urlpatterns = [
      path('Inventorybox_check_date', Inventory.InventoryDateCheckView.as_view()),
      path('Inventorybox_update', Inventory.InventoryUpdateView.as_view()),
 
-     path('Inventoryunit/', Inventory.InvetoryUnitList.as_view()),
+     path('Inventoryunit/', Inventory.InvetoryUnitListDate.as_view()),
      path('Inventoryunit_create', Inventory.InvetoryUnitList.as_view()),
+     path('Inventoryunit_check_date', Inventory.InventoryUnitDateCheckView.as_view()),
+     path('Inventoryunit_update', Inventory.InventoryUnitUpdateView.as_view()),
 
      ## proveedores end points=================================================
     
@@ -46,7 +48,7 @@ urlpatterns = [
      path('suppliers_debts_paids_filter', SuppliersDebts.SuppliersDebtsPayFilterView.as_view()),
      #HISTORIAL DE DEUDAS
      path('suppliers_debts_history/', SuppliersDebts.SuppliersDebtsHistoryView.as_view()),
-     path('suppliers_debts_total/', SuppliersDebts.SuppliersDebtsTotalView.as_view()),
+     path('suppliers_debts_total/', SuppliersDebts.SuppliersDebtsTotalView.as_view()), #total
      ## deudores end points=====================================================
 
      path('debtors/', Debtors.DebtorsViewList.as_view()),
@@ -63,7 +65,8 @@ urlpatterns = [
      path('debtorscredits_filter/', DebtorsCredits.DebtorsCreditsViewFilter.as_view()),
      path('debtorscredits_paids_filter/', DebtorsCredits.CreditPaysView.as_view()),
 
-     path('debtorscredits_total', DebtorsCredits.CreditTotalView.as_view()),
+     
+     path('debtorscredits_total', DebtorsCredits.CreditTotalView.as_view()), #total
      
 
      #HISTORIAL DE CREDITO
